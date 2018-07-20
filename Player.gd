@@ -6,13 +6,13 @@ extends Area2D
 signal hit
 export (int) var speed  # How fast the player will move (pixels/sec).
 var screensize  # Size of the game window.
+var score
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	hide()
 	screensize = get_viewport_rect().size
-	pass
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -57,11 +57,3 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false	
 
-func game_over():
-	$ScoreTimer.stop()
-	$MobTimer.stop()
-
-func new_game():
-	score = 0
-	$Player.start($StartPosition.position)
-	$StartTimer.start()
